@@ -18,5 +18,10 @@ namespace SkolaJezika.Moduli
             Id = id;
             Naziv = naziv;
         }
+
+        public override string ToString()
+        {
+            return String.Format("ID: {0} | Naziv: {1}", Id, Naziv);
+        }
     }
 }

@@ -101,10 +101,11 @@ namespace SkolaJezika.DAO
             try
             {
                 string query = "UPDATE nastavnik " +
-                               "SET ime=@ime, prezime=@prezime, telefon=@telefon" +
+                               "SET ime=@ime, prezime=@prezime, telefon=@telefon " +
                                "WHERE id=@id";
                 SqlCommand cmd = new SqlCommand(query, conn);
 
+                cmd.Parameters.AddWithValue("@id", nastavnik.Id);
                 cmd.Parameters.AddWithValue("@ime", nastavnik.Ime);
                 cmd.Parameters.AddWithValue("@prezime", nastavnik.Prezime);
                 cmd.Parameters.AddWithValue("@telefon", nastavnik.BrojTel);

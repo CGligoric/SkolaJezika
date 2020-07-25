@@ -46,7 +46,7 @@ namespace SkolaJezika.DAO
             List<Ucenik> sviUcenici = new List<Ucenik>();
             try
             {
-                string query = "SELECT id, ime, prezime, telefon FROM ucenici ";
+                string query = "SELECT id, ime, prezime, telefon FROM ucenik ";
                 SqlCommand cmd = new SqlCommand(query, conn);
                 SqlDataReader r = cmd.ExecuteReader();
 
@@ -75,10 +75,11 @@ namespace SkolaJezika.DAO
 
             try
             {
-                string query = "INSERT INTO ucenik (ime, prezime, telefon) " +
-                               "VALUES (@ime, @prezime, @telefon)";
+                string query = "INSERT INTO ucenik (id, ime, prezime, telefon) " +
+                               "VALUES (@id, @ime, @prezime, @telefon)";
                 SqlCommand cmd = new SqlCommand(query, conn);
 
+                cmd.Parameters.AddWithValue("@id", uc.Id);
                 cmd.Parameters.AddWithValue("@ime", uc.Ime);
                 cmd.Parameters.AddWithValue("@prezime", uc.Prezime);
                 cmd.Parameters.AddWithValue("@telefon", uc.BrojTel);
@@ -102,10 +103,11 @@ namespace SkolaJezika.DAO
             try
             {
                 string query = "UPDATE ucenik " +
-                               "SET ime=@ime, prezime=@prezime, telefon=@telefon" +
+                               "SET ime=@ime, prezime=@prezime, telefon=@telefon " +
                                "WHERE id=@id";
                 SqlCommand cmd = new SqlCommand(query, conn);
 
+                cmd.Parameters.AddWithValue("@id", uc.Id);
                 cmd.Parameters.AddWithValue("@ime", uc.Ime);
                 cmd.Parameters.AddWithValue("@prezime", uc.Prezime);
                 cmd.Parameters.AddWithValue("@telefon", uc.BrojTel);
@@ -127,8 +129,8 @@ namespace SkolaJezika.DAO
             bool retVal = false;
             try
             {
-                string query = "DELETE FROM ucenik" +
-                               "WHERE id=" + id;
+                string query = "DELETE FROM ucenik " +
+                               "WHERE id = " + id;
                 SqlCommand cmd = new SqlCommand(query, conn);
 
                 if (cmd.ExecuteNonQuery() == 1)

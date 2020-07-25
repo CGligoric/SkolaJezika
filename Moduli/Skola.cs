@@ -30,5 +30,11 @@ namespace SkolaJezika.Moduli
             MatBroj = matBroj;
             BrZiroRac = brZirRac;
         }
+
+        public override string ToString()
+        {
+            return String.Format("Naziv: {0} | Adresa: {1} | Telefon {2} | E-mail: {3} | Sajt: {4} | PIB: {5} | Maticni broj: {6} | Ziro racun: {7}",
+                Naziv, Adresa, Telefon, Email, AdresaSajta, PIB, MatBroj, BrZiroRac);
+        }
     }
 }

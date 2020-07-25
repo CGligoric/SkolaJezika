@@ -11,8 +11,59 @@ namespace SkolaJezika.UI
 {
     class UcenikUI
     {
+        public static void IspisiMeniUcenik()
+        {
+            Console.WriteLine("Rad sa ucenicima skole - opcije");
+            Console.WriteLine("Opcija 1 - ispis svih ucenika sa svim njihovim podacima");
+            Console.WriteLine("Opcija 2 - ispis odredjenog ucenika po id");
+            Console.WriteLine("Opcija 3 - dodavanje novog ucenika");
+            Console.WriteLine("Opcija 4 - osvezavanje podataka ucenika");
+            Console.WriteLine("Opcija 5 - brisanje uceika");
+            Console.WriteLine("Upisite opciju: ");
+        }
         static List<Ucenik> sviUcenici = null;
+        public static void IspisiKompletMeniUcenik()
+        {
+            UcenikUI.IspisiMeniUcenik();
 
+            bool nastavak = false;
+
+            do
+            {
+                int opcija = Convert.ToInt32(Console.ReadLine());
+                Console.Clear();
+
+                if (opcija == 1)
+                {
+                    UcenikUI.IspisiSveUcenike();
+                }
+                else if (opcija == 2)
+                {
+                    UcenikUI.IspisiUcenikaPoId();
+                }
+                else if (opcija == 3)
+                {
+                    UcenikUI.DodajUcenika();
+                }
+                else if (opcija == 4)
+                {
+                    UcenikUI.UpdatujUcenika();
+                }
+                else if (opcija == 5)
+                {
+                    UcenikUI.ObrisiUcenikaPoId();
+                }
+                Console.WriteLine("Zelite li da nastavite s radim nad ucenima? y/n");
+                string dane = Console.ReadLine();
+                if (dane == "y")
+                {
+                    nastavak = true;
+                }
+                Console.Clear();
+                IspisiMeniUcenik();
+            } while (nastavak);
+            
+        }
         public static void IspisiSveUcenike()
         {
             sviUcenici = UcenikDAO.GetAll(Program.conn);
@@ -50,13 +101,12 @@ namespace SkolaJezika.UI
 
             if (uspeh)
             {
-                Console.WriteLine("Ucenik uspesno obrisan!");
+                Console.WriteLine("Ucenik uspesno dodat u bazi");
             }
             else
             {
-                Console.WriteLine("Nije pronadjen nijedan ucenik sa unetim id-jem");
+                Console.WriteLine("Neuspesno dodavanje ucenika :(");
             }
-            Console.WriteLine("Nov ucenik je pridodat bazi podataka skole!");
         }
 
         public static void ObrisiUcenikaPoId()

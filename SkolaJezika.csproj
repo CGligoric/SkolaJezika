@@ -44,20 +44,30 @@
   <ItemGroup>
     <Compile Include="DAO\KursDAO.cs" />
     <Compile Include="DAO\NastavnikDAO.cs" />
+    <Compile Include="DAO\NivoDAO.cs" />
+    <Compile Include="DAO\PohadjaPredajeDAO.cs" />
+    <Compile Include="DAO\SkolaDAO.cs" />
     <Compile Include="DAO\UcenikDAO.cs" />
     <Compile Include="DAO\UplataDAO.cs" />
     <Compile Include="DAO\UplataUcenikaDAO.cs" />
     <Compile Include="Moduli\Kurs.cs" />
     <Compile Include="Moduli\Nastavnik.cs" />
     <Compile Include="Moduli\Nivo.cs" />
-    <Compile Include="Moduli\Pohadja_predaje.cs" />
+    <Compile Include="Moduli\PohadjaPredaje.cs" />
     <Compile Include="Moduli\Skola.cs" />
     <Compile Include="Moduli\Ucenik.cs" />
     <Compile Include="Moduli\Uplata.cs" />
-    <Compile Include="Moduli\Uplata_ucenika.cs" />
+    <Compile Include="Moduli\UplataUcenika.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UI\KursUI.cs" />
+    <Compile Include="UI\NastavnikUI.cs" />
+    <Compile Include="UI\NivoUI.cs" />
+    <Compile Include="UI\PohadjaPredajeUI.cs" />
+    <Compile Include="UI\SkolaUI.cs" />
     <Compile Include="UI\UcenikUI.cs" />
+    <Compile Include="UI\UplataUcenikaUI.cs" />
+    <Compile Include="UI\UplataUI.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

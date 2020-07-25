@@ -18,5 +18,10 @@ namespace SkolaJezika.Moduli
             Datum = datum;
             Iznos = iznos;
         }
+
+        public override string ToString()
+        {
+            return String.Format("ID: {0} | Datum uplate: {1} | Iznos: {2:c}", Id, Datum, Iznos);
+        }
     }
 }

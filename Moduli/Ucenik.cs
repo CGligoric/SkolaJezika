@@ -23,7 +23,7 @@ namespace SkolaJezika.Moduli
 
         public override string ToString()
         {
-            return String.Format("Id Ucenika: " + Id + " | Ime: " + " | Prezime: " + Prezime + " Telefon: " + BrojTel);
+            return String.Format("Id Ucenika: " + Id + " | Ime: " + Ime + " | Prezime: " + Prezime + " Telefon: " + BrojTel);
         }
     }
 }

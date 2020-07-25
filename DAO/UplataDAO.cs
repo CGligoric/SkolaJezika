@@ -104,6 +104,7 @@ namespace SkolaJezika.DAO
                                "WHERE id=@id";
                 SqlCommand cmd = new SqlCommand(query, conn);
 
+                cmd.Parameters.AddWithValue("@id", uplata.Id);
                 cmd.Parameters.AddWithValue("@datum", uplata.Datum);
                 cmd.Parameters.AddWithValue("@iznos", uplata.Iznos);
 

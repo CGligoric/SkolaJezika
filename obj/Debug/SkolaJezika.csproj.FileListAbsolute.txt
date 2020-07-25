@@ -1,0 +1,7 @@
+C:\Users\a cool guy\Desktop\Skola jezika\SkolaJezika\obj\Debug\SkolaJezika.csprojAssemblyReference.cache
+C:\Users\a cool guy\Desktop\Skola jezika\SkolaJezika\obj\Debug\SkolaJezika.csproj.CoreCompileInputs.cache
+C:\Users\a cool guy\Desktop\Skola jezika\SkolaJezika\bin\Debug\SkolaJezika.exe.config
+C:\Users\a cool guy\Desktop\Skola jezika\SkolaJezika\bin\Debug\SkolaJezika.exe
+C:\Users\a cool guy\Desktop\Skola jezika\SkolaJezika\bin\Debug\SkolaJezika.pdb
+C:\Users\a cool guy\Desktop\Skola jezika\SkolaJezika\obj\Debug\SkolaJezika.exe
+C:\Users\a cool guy\Desktop\Skola jezika\SkolaJezika\obj\Debug\SkolaJezika.pdb

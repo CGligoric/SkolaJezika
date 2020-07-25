@@ -6,30 +6,27 @@ using System.Text;
 using System.Threading.Tasks;
 using SkolaJezika.Moduli;
 
-
 namespace SkolaJezika.DAO
 {
-    class KursDAO
+    class NivoDAO
     {
-        public static Kurs GetKursById(SqlConnection conn, int id)
+        public static Nivo GetNivoById(SqlConnection conn, int id)
         {
-            Kurs kurs = null;
+            Nivo nivo = null;
 
             try
             {
-                string query = "SELECT id, jezik, nivo_id, cena " +
-                               "FROM kurs " +
+                string query = "SELECT id, naziv " +
+                               "FROM nivo " +
                                "WHERE id = " + id;
                 SqlCommand cmd = new SqlCommand(query, conn);
                 SqlDataReader r = cmd.ExecuteReader();
 
                 if (r.Read())
                 {
-                    string jezik = (string)r["jezik"];
-                    int nivoId = (int)r["nivo_id"];
-                    int cena = (int)r["cena"];
+                    string naziv = (string)r["naziv"];
 
-                    kurs = new Kurs(id, nivoId, jezik, cena);
+                    nivo = new Nivo(id, naziv);
                 }
                 r.Close();
             }
@@ -37,28 +34,26 @@ namespace SkolaJezika.DAO
             {
                 Console.WriteLine(e.Message);
             }
-            return kurs;
+            return nivo;
         }
 
-        public static List<Kurs> GetAll(SqlConnection conn) // TODO
+        public static List<Nivo> GetAll(SqlConnection conn) // TODO
         {
-            List<Kurs> sviKursevi = new List<Kurs>();
+            List<Nivo> sviNivoi = new List<Nivo>();
 
             try
             {
-                string query = "SELECT id, jezik, cena, nivo_id " +
-                               "FROM kurs";
+                string query = "SELECT id, naziv " +
+                               "FROM nivo";
                 SqlCommand cmd = new SqlCommand(query, conn);
                 SqlDataReader r = cmd.ExecuteReader();
 
                 while (r.Read())
                 {
                     int id = (int)r["id"];
-                    int nivoId = (int)r["nivo_id"];
-                    string jezik = (string)r["jezik"];
-                    int cena = (int)r["cena"];
+                    string naziv = (string)r["naziv"];
 
-                    sviKursevi.Add(new Kurs(id, nivoId, jezik, cena));
+                    sviNivoi.Add(new Nivo(id, naziv));
                 }
                 r.Close();
             }
@@ -66,23 +61,21 @@ namespace SkolaJezika.DAO
             {
                 Console.WriteLine(e.Message);
             }
-            return sviKursevi;
+            return sviNivoi;
         }
 
-        public static bool Add(SqlConnection conn, Kurs kurs)
+        public static bool Add(SqlConnection conn, Nivo nivo)
         {
             bool retVal = false;
 
             try
             {
-                string query = "INSERT INTO kurs (jezik, cena, nivo_id,id) " +
-                               "VALUES (@jezik,@cena,@nivo_id,@id)";
+                string query = "INSERT INTO nivo (naziv,id) " +
+                               "VALUES (@naziv,@id)";
                 SqlCommand cmd = new SqlCommand(query, conn);
 
-                cmd.Parameters.AddWithValue("@jezik", kurs.Jezik);
-                cmd.Parameters.AddWithValue("@cena", kurs.Cena);
-                cmd.Parameters.AddWithValue("@nivo_id", kurs.Nivo.Id);
-                cmd.Parameters.AddWithValue("@id", kurs.Id);
+                cmd.Parameters.AddWithValue("@naziv", nivo.Naziv);
+                cmd.Parameters.AddWithValue("@id", nivo.Id);
 
                 if (cmd.ExecuteNonQuery() == 1)
                 {
@@ -96,21 +89,19 @@ namespace SkolaJezika.DAO
 
             return retVal;
         }
-
-        public static bool Update(SqlConnection conn, Kurs kurs)
+        public static bool Update(SqlConnection conn, Nivo nivo)
         {
             bool retVal = false;
 
             try
             {
-                string query = "UPDATE kurs " +
-                               "SET jezik=@jezik,cena=@cena,nivo_id=@nivo_id " +
+                string query = "UPDATE nivo " +
+                               "SET naziv=@naziv " +
                                "WHERE id=@id";
                 SqlCommand cmd = new SqlCommand(query, conn);
 
-                cmd.Parameters.AddWithValue("@jezik", kurs.Jezik);
-                cmd.Parameters.AddWithValue("@cena", kurs.Cena);
-                cmd.Parameters.AddWithValue("@nivo_id", kurs.Nivo.Id);
+                cmd.Parameters.AddWithValue("@naziv", nivo.Naziv);
+                cmd.Parameters.AddWithValue("@id", nivo.Id);
 
                 if (cmd.ExecuteNonQuery() == 1)
                 {
@@ -131,8 +122,8 @@ namespace SkolaJezika.DAO
 
             try
             {
-                string query = "DELETE FROM kurs" +
-                               "WHERE id=" + id;
+                string query = "DELETE FROM nivo " +
+                               "WHERE id = " + id;
                 SqlCommand cmd = new SqlCommand(query, conn);
 
                 if (cmd.ExecuteNonQuery() == 1)

@@ -10,7 +10,7 @@ namespace SkolaJezika.Moduli
     {
         public int Id { get; set; }
         public string Ime { get; set; }
-        public string Prezime { get; set;}
+        public string Prezime { get; set; }
         public int BrojTel { get; set; }
 
         public Nastavnik(int id, string ime, string prezime, int brojTel)
@@ -19,6 +19,11 @@ namespace SkolaJezika.Moduli
             Ime = ime;
             Prezime = prezime;
             BrojTel = brojTel;
+        }
+
+        public override string ToString()
+        {
+            return String.Format("ID: {0} | Ime: {1} | Prezime: {2} | Telefon: {3}", Id, Ime, Prezime, BrojTel);
         }
     }
 }
